@@ -1,0 +1,44 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: sans-serif;
+    color: #111111;
+    background-color: #fcfcfc;
+}
+
+header {
+    padding: 16px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    border-bottom: 1px solid #707070;
+    padding: 8px;
+}
+
+tr {
+    padding: 8px;
+}
+
+th, td {
+    padding: 8px 16px;
+}
+
+.wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
