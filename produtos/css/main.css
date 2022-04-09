@@ -47,7 +47,7 @@ tr {
     padding: 8px;
 }
 
-tr:hover {
+tbody tr:hover {
     background-color: #bdbdbd;
 }
 
@@ -61,9 +61,17 @@ th, td {
     padding: 0 10px;
 }
 
-h3 {
+#cabecalho {
+    font-size: 1.5em;
     margin-bottom: 20px;
     border-top: 1px solid rgba(0,0,0,0.5);
     border-bottom: 1px solid rgba(0,0,0,0.5);
     padding: 10px 20px;
+}
+
+select {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 0.8em;
 }
