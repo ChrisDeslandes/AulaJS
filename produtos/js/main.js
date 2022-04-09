@@ -4,9 +4,7 @@ const tbody = document.createElement('tbody');
 
 const tableContainer = document.querySelector('.wrapper');
 
-const cabecalho = ['ID', 'Nome', 'Preço', 'Categoria'];
-
-let produtos = [];
+const cabecalho = ['ID', 'Nome', 'Preço', 'Categoria', 'Excluir'];
 
 window.addEventListener('load', function() {
     criarTabela();
@@ -49,13 +47,29 @@ function atualizarLinhas(dados) {
         let nome = document.createElement('td');
         let preco = document.createElement('td');
         let categoria = document.createElement('td');
+        let excluir = document.createElement('td');
         id.textContent = dado['id'];
         nome.textContent = dado['title'];
         preco.textContent = dado['price'];
         categoria.textContent = dado['category'];
+        let botaoExcluir = document.createElement('button');
+        botaoExcluir.setAttribute('type', 'button');
+        botaoExcluir.textContent = 'x';
+        botaoExcluir.addEventListener('click', () => {
+            linha.remove();
+        });
+        excluir.appendChild(botaoExcluir);
         linha.appendChild(id);
         linha.appendChild(nome);
         linha.appendChild(preco);
         linha.appendChild(categoria);
+        linha.appendChild(excluir);
     });
 }
+
+function filtrar() {
+    let select = document.getElementById("filtroCategoria");
+}
+
+// Fazer o filtro por categoria
+// Abrir detalhes dos produtos em nova guia exibir.html quando clicar na linha
