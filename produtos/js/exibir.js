@@ -29,14 +29,21 @@ function acharProduto(dados) {
 function mostrarDetalhes(produto) {
     for (let chave in produto) {
         p = document.createElement('p');
-        p.setAttribute('style', 'margin-bottom:15px;font-size:2em;');
+        p.setAttribute('style', 'margin-bottom:15px;font-size:1.5em;');
         p.textContent = chave + ': ';
         if(chave == 'rating') {
             for (let campo in produto[chave]) {
                 p2 = document.createElement('p');
-                p2.textContent = '|------- ' + campo + ': ' + chave[campo];
+                p2.setAttribute('style', 'margin-left:80px;')
+                p2.textContent = campo + ': ' + chave[campo];
                 p.appendChild(p2);
             }
+        } else if(chave == 'image') {
+            a = document.createElement('a');
+            a.setAttribute('href', produto[chave]);
+            a.setAttribute('target', '_blank');
+            a.textContent += produto[chave];
+            p.appendChild(a);
         } else {
             p.textContent += produto[chave];
         }

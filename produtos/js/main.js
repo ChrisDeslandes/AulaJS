@@ -109,5 +109,3 @@ function atualizarNumProdutos() {
     }
     document.getElementById('numProdutos').textContent = contador;
 }
-
-// Abrir detalhes dos produtos em nova guia exibir.html quando clicar na linha
