@@ -55,8 +55,24 @@ function atualizarLinhas(dados) {
         categoria.textContent = dado['category'];
         botaoExcluir.textContent = 'x';
         botaoExcluir.setAttribute('type', 'button');
-        botaoExcluir.addEventListener('click', () => {
-            linha.remove();
+        botaoExcluir.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            linha.remove();          
+            let corpoTabela = document.getElementById("corpo-tabela");
+            let linhas = corpoTabela.getElementsByTagName("tr");
+            let cont = 0;
+            for(let i = 0; i < linhas.length; i++) {
+                if(linhas[i].style.display == '') {
+                    cont += 1;
+                }
+            }
+            if(cont == 0) {
+                carregarCategorias();
+                for(let i = 0; i < linhas.length; i++) {
+                    linhas[i].style.display = '';
+                }
+            }
             atualizarNumProdutos();
         });
         excluir.appendChild(botaoExcluir);
@@ -68,6 +84,7 @@ function atualizarLinhas(dados) {
         linha.appendChild(excluir);
     });    
     atualizarNumProdutos();
+    carregarCategorias();
 }
 
 function exibirDetalhes(id) {
@@ -108,4 +125,26 @@ function atualizarNumProdutos() {
         }
     }
     document.getElementById('numProdutos').textContent = contador;
+}
+
+function carregarCategorias() {
+    const filtro = document.getElementById("filtroCategoria");
+    filtro.innerHTML = '';
+    let todas = document.createElement('option');
+    todas.value = 'Todas';
+    todas.textContent = 'Todas as categorias';
+    filtro.appendChild(todas);
+    let linhas = corpoTabela.getElementsByTagName("tr");
+    let categorias = [];
+    for (let i = 0; i < linhas.length; i++) {
+        if(!categorias.includes(linhas[i].getElementsByTagName("td")[3].textContent)) {
+            categorias.push(linhas[i].getElementsByTagName("td")[3].textContent);
+        }
+    }
+    categorias.forEach((categoria) => {
+        let opt = document.createElement('option');
+        opt.value = categoria;
+        opt.textContent = categoria;
+        filtro.appendChild(opt);
+    });
 }
