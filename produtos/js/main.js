@@ -48,16 +48,16 @@ function atualizarLinhas(dados) {
         let categoria = document.createElement('td');
         let excluir = document.createElement('td');
         let botaoExcluir = document.createElement('button');
-        id.textContent = dado['id'];
+        id.textContent = dado['id'].toString().padStart(2, 0);
         nome.textContent = dado['title'];
-        preco.textContent = dado['price'];
+        preco.textContent = dado['price'].toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'});
         categoria.textContent = dado['category'];
         botaoExcluir.textContent = 'x';
         botaoExcluir.type = 'button';
         botaoExcluir.onclick = function (e) {
             e.preventDefault();
             e.stopPropagation();
-            linha.remove();     
+            linha.remove();
             let corpoTabela = document.getElementById('corpo-tabela');
             let linhas = corpoTabela.getElementsByTagName('tr');
             let cont = 0;
